@@ -1,0 +1,95 @@
+20230403
+
+SWIFT 강의
+
+(2) swift 강좌 : 오토레이아웃, 기본 UI  그리기 1 
+https://www.youtube.com/watch?v=QdYdssBfu1E&list=PLva6rQOdsvQWlAzZJYhx1a0Y5Stu88cZK&index=2
+
+AppDelegate.swift
+SceneDelegate.swift
+ViewController.swift 
+위 세개는 스위프트 문법을 다루는 것이다
+
+LaunchScreen.storyboard는 앱이 실행되면서 제일 먼저 나오는 화면, 즉 로딩화면이다
+
+Main.storyboard는 그 다음으로 나오는 화면으로 사용자에게 보이는 앱의 첫 화면이다
+
++ 모양을 누르면 Label, Button, Control 등 다양한 조작키 UI를 Main.storyboard에 추가할 수 있다
+
+라벨을 추가한다면 ???
+오른쪽 메뉴상자, 오른쪽에서 3번째에 있는 ‘Show the Attributes inspector’에서 
+텍스트 내용, 폰트, 글씨크기, 색깔 등 디자인이 변경가능하다
+
+Main.storyboard에는 처음부터 끝까지 주의깊게 신경써야할 부분이 있다. —> Auto Layout!!
+
+추가한 라벨과 같은 Objects을 정렬하기 위해(앱을 실행하였을 때 올바른 위치에 두기 위함이다)
+방법???
+—> 추가한 Object 클릭 후 Add new Alignment Constraints 에서 vertical 및 horizontal 체크 후 add constraints..
+
+Contraints = 제약 사항
+
+——————————————————————————————————————————————
+
+**Label 레이블 : 텍스트를 보여주는 객체
+
+**Text Field 텍스트필드 : 사용자로부터직접 글자를 입력할 수 있는 객체
+
+**Button : 사용자로부터 액션을 입력받을 때 주로 사용하는 객체
+
+—> 스토리 보드에 배치된 객체는 사용자로부터 입력을 받거나 사용자 인터페이스 역할을 한다
+
+**Outlet Variable 아웃렛 변수
+: 앞에서 만든 텍스트 필드에 사용자가 이름을 입력하면 입력한 텍스트를 받아
+저장할 변수를 만들고 만든 변수와 텍스트 필드를 연결시켜줘야 하는데 이때의 변수를 아웃렛 변수라고 한다
+
+**Action Function 액션 함수
+: 버튼이 눌리고 사용자로부터 액션을 입력받았을 때 입력된 글을 읽어서 레이블에 출력하는 함수를 만들고
+이 함수를 버튼과 연결시켜줘야 한다. 이를 액션 함수라고 한다
+
+<아웃렛변수 & 액션함수 추가하기>
+0(공통). Assistant editor 보조 편집기 영역을 불러온다
+
+1. 레이블에 아웃렛 변수 추가하기
+—> 글씨가 입력된 레이블을 오른쪽마우스클릭으로 선택후 드래그하여 보조 편집기 영역으로 가져간다
+-> 연결선이 나타나면 이 연결선을 뷰 컨트롤러의 클래스 선언문 “class ViewController : ~~~~~~ “ 바로 아래에 가져다 놓는다(** 아웃렛 변수는 일반적으로 class클래스 선언부 바로 아래에 추가함
+
+—> 아웃렛 변수의 이름 입력후 Type이 ‘UILabel’인지 확인… 마지막으로 Storage를 ’Strong’으로 설정하고 Connect
+—> @IBOutlet var lblHello: UILabel!
+—> 레이블에 대한 아웃렛 변수 추가 완료!!!!
+
+2. 텍스트 필드에 아웃렛 변수 추가하기
+텍스트 필드를 우클릭으로 선택후 드래그하여 보조 편집기 영역으로 가져간다
+—> 조금 전에 추가한 레이블의 아웃렛변수 아래에 끌어다 놓는다
+—> 이름을 입력하고 Type확인 후 Storage를 ’Strong’으로 하고 Connect…..!
+—> @IBOutlet var txtName: UITextField!
+—> 텍스트필드에 대한 아웃렛 변수 추가 완료!!!!
+
+3. 버튼에 대한 액션 함수 추가하기
+버튼을 우클릭으로 선택 후 드래그하여 보조 편집기 영역으로 가져간다
+—> 일반적으로 액션함수는 클래스의 맨 마지막 부분에 추가한다 ( 마지막 대괄호와 secondlast 대괄호 사이)
+—> 이름 입력 후 type: UIbutton, Connection : Action 후 Connect
+—> @IBAction func btnSend(_ sender: UIButton) {
+    }
+—> 버튼에 대한 액션 함수 추가 완료!!!
+
+
+——————————————————————————————————————————————
+
+<버튼 클릭 시 동작 구현하기>
+
+왼쪽 네비게이터 영역에서 ViewController.swift를 선택한다
+—> 화면 오른쪽 윗부분의 Adjust Editor Options버튼을 클릭한 후 Minimap 닫기
+—> Send버튼을 클릭했을 때 동작할 btnSend 액션함수를 다음과 같이 코딩한다 
+
+lblHello.text = "Hello, " + txtName.text!
+
+*스위프트에서는 문자열을 합칠 때 + 연산자를 사용한다
+
+
+——————————————————————————————————————————————
+
++  아웃렛 변수 = 객체에 대한 속성을 지정할 때
+    액션 함수 = 객체에 이벤트를 넣고 싶을 때
+
+20230403 ~65P.
+
